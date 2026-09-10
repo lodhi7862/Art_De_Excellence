@@ -150,6 +150,14 @@ nav {
 }
 .theme-btn:hover { transform: rotate(45deg) scale(1.08); border-color: var(--gold); }
 
+.login-btn {
+  display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 16px;
+  border: 1px solid var(--border); background: var(--bg-card); color: var(--gold);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase;
+  white-space: nowrap; border-radius: 2px; transition: all 0.3s ease; flex-shrink: 0;
+}
+.login-btn:hover { border-color: var(--gold); background: var(--gold); color: #fff; }
+
 /* TAB TRANSITIONS & CONTENT */
 .tab-content {
   display: none; padding-top: 95px; min-height: 100vh;
@@ -371,6 +379,7 @@ footer { background: #050504; color: #A39C93; padding: 8rem 0 3.5rem; border-top
   .nav-links li a { display: block; width: 100%; padding: 18px 28px; }
   .nav-links li a::after { display: none; }
   .search-slicer { display: flex; width: 150px; }
+  .login-btn { padding: 0 12px; font-size: 0.68rem; }
   .hero-section { padding: 6.5rem 0; min-height: auto; }
   .tab-content { padding-top: 78px; }
 }
@@ -423,6 +432,7 @@ footer { background: #050504; color: #A39C93; padding: 8rem 0 3.5rem; border-top
       </div>
 
       <button class="theme-btn" id="themeToggle" title="Toggle Light/Dark Theme" aria-label="Toggle color theme"><i class="fa-solid fa-moon"></i></button>
+      <a href="/admin/login" class="login-btn"><i class="fa-solid fa-lock"></i> Login</a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -1283,6 +1293,7 @@ footer { background: #050504; color: #A39C93; padding: 8rem 0 3.5rem; border-top
           <li><a href="#blog">Blog</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact Us</a></li>
+          <li><a href="/admin/login">Staff Login</a></li>
         </ul>
       </div>
       <div class="footer-col">

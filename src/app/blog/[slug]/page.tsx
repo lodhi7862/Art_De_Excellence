@@ -25,7 +25,10 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
         <Link href="/#blog" className="logo">
           Art <span style={{ color: "var(--gold)" }}>de</span> Excellence
         </Link>
-        <Link href="/#blog">Back to journal</Link>
+        <div className="row-actions">
+          <Link href="/#blog">Back to journal</Link>
+          <Link href="/admin/login">Login</Link>
+        </div>
       </nav>
       <header className="article-hero">
         <div className="category">{post.category}</div>
