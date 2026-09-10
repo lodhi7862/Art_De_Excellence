@@ -1,0 +1,30 @@
+export const GALLERY_IMAGES = [
+  "/Images/gallery/31330211169e.jpg",
+  "/Images/gallery/b59f6e1d3587.jpg",
+  "/Images/gallery/0bfcfa0e7d37.jpg",
+  "/Images/gallery/465b3c25f2c3.jpg",
+  "/Images/gallery/aec5ab31631e.jpg",
+  "/Images/gallery/ad48f9fa244e.jpg",
+  "/Images/gallery/33d9e557183d.jpg",
+  "/Images/gallery/085825a1307e.jpg",
+  "/Images/gallery/3d132eb7b109.jpg",
+  "/Images/gallery/4cf5b4d6554d.jpg",
+  "/Images/gallery/ad9a00f81b98.jpg",
+  "/Images/gallery/d096870a1aab.jpg",
+  "/Images/Banner/Image1.webp",
+  "/Images/Banner/Image2.png",
+  "/Images/Banner/Image3.png",
+  "/Images/Banner/Image4.jpg",
+  "/Images/Banner/Image5.jpg",
+  "/Images/Banner/ss.jpg",
+];
+
+export const POST_CATEGORIES = [
+  "Metallurgy",
+  "3D Design",
+  "Finishing",
+  "Gemology",
+  "Casting Science",
+  "Jewelry Business",
+  "Atelier Notes",
+];

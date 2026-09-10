@@ -2,7 +2,11 @@
 Thumbs.db
 .vercel
 node_modules/
+.next/
 *.zip
+.env
+.env.local
+.env*.local
 home.html
 about.html
 blog.html
