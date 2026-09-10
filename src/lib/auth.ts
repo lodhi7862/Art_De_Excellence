@@ -17,15 +17,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           .toLowerCase()
           .trim();
         const password = String(credentials?.password ?? "");
-        if (!email || !password || !process.env.DATABASE_URL) return null;
+        if (!email || !password) return null;
+        if (!process.env.DATABASE_URL) {
+          console.error("DATABASE_URL is missing");
+          return null;
+        }
 
-        const user = await prisma.adminUser.findUnique({ where: { email } });
-        if (!user) return null;
+        try {
+          const user = await prisma.adminUser.findUnique({ where: { email } });
+          if (!user) return null;
 
-        const valid = await bcrypt.compare(password, user.passwordHash);
-        if (!valid) return null;
+          const valid = await bcrypt.compare(password, user.passwordHash);
+          if (!valid) return null;
 
-        return { id: user.id, email: user.email, name: user.name };
+          return { id: user.id, email: user.email, name: user.name };
+        } catch (error) {
+          console.error("Admin login lookup failed", error);
+          return null;
+        }
       },
     }),
   ],

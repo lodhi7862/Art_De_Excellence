@@ -1,14 +1,47 @@
 "use client";
 
-import { useActionState } from "react";
-import { loginAction } from "@/lib/actions";
+import { useState } from "react";
+import { signIn } from "next-auth/react";
 
 export default function LoginForm() {
-  const [state, formAction, pending] = useActionState(loginAction, undefined);
+  const [error, setError] = useState("");
+  const [pending, setPending] = useState(false);
+
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError("");
+    setPending(true);
+
+    const form = new FormData(event.currentTarget);
+    const result = await signIn("credentials", {
+      email: String(form.get("email") ?? ""),
+      password: String(form.get("password") ?? ""),
+      redirect: false,
+      callbackUrl: "/admin",
+    });
+
+    setPending(false);
+
+    if (!result) {
+      setError("Could not reach the login service. Try again.");
+      return;
+    }
+
+    if (result.error) {
+      setError(
+        result.error === "Configuration"
+          ? "Login is not configured on the server. Check DATABASE_URL and AUTH_SECRET in Vercel."
+          : "Invalid email or password.",
+      );
+      return;
+    }
+
+    window.location.assign(result.url || "/admin");
+  }
 
   return (
-    <form action={formAction}>
-      {state?.error ? <p className="error">{state.error}</p> : null}
+    <form onSubmit={onSubmit}>
+      {error ? <p className="error">{error}</p> : null}
       <div className="field">
         <label htmlFor="email">Email</label>
         <input id="email" name="email" type="email" autoComplete="username" required />
