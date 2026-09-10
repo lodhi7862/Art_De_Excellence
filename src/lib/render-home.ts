@@ -51,7 +51,7 @@ export function renderBlogFeed(posts: PublicPost[]): string {
 }
 
 export async function renderHomeHtml(): Promise<string> {
-  const template = await readFile(path.join(process.cwd(), "content/home.html"), "utf8");
+  const template = await readFile(path.join(process.cwd(), "content/site-template.html"), "utf8");
   const posts = await getPublishedPosts();
   return template.replace("<!--BLOG_FEED-->", renderBlogFeed(posts));
 }
