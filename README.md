@@ -1,6 +1,6 @@
-# Art De Excellence
+# KAMAIZ
 
-Haute joaillerie OEM/ODM website with an admin desk for publishing live journal articles.
+Jewelry design and development website with an admin desk for publishing live journal articles.
 
 ## Local development
 

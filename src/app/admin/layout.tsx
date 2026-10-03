@@ -10,7 +10,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       {session?.user ? (
         <header className="admin-bar">
           <div>
-            <strong>Art de Excellence</strong>
+            <strong>KAMAIZ</strong>
             <div className="muted">{session.user.email}</div>
           </div>
           <div className="row-actions">

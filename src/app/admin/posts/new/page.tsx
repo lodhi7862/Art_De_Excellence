@@ -2,7 +2,7 @@ import Link from "next/link";
 import PostForm from "@/components/PostForm";
 import { createPostAction } from "@/lib/actions";
 
-export const metadata = { title: "New article | Art De Excellence" };
+export const metadata = { title: "New article | KAMAIZ" };
 
 export default function NewPostPage() {
   return (

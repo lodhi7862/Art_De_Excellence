@@ -4,7 +4,7 @@ import { formatDate } from "@/lib/html";
 import DeletePostButton from "@/components/DeletePostButton";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Journal desk | Art De Excellence" };
+export const metadata = { title: "Journal desk | KAMAIZ" };
 
 export default async function AdminDashboardPage() {
   const posts = await getAllAdminPosts();

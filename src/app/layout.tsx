@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Art De Excellence | Haute Joaillerie OEM/ODM Studio",
+  title: "KAMAIZ | Jewelry Design & Development Partner",
   description:
-    "Art De Excellence is a haute joaillerie OEM/ODM atelier specializing in CAD engineering, vacuum casting, and micro-pave setting for luxury jewelry brands.",
+    "KAMAIZ is a jewelry design and development partner in Bangkok, guiding independent brands from first sketch through production and final delivery.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

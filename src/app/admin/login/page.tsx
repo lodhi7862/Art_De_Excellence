@@ -1,6 +1,6 @@
 import LoginForm from "@/components/LoginForm";
 
-export const metadata = { title: "Admin login | Art De Excellence" };
+export const metadata = { title: "Admin login | KAMAIZ" };
 
 export default function AdminLoginPage() {
   return (
