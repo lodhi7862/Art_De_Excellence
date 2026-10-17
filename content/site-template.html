@@ -287,6 +287,12 @@ nav {
 
 /* ACCORDION FAQ */
 .faq-wrap { max-width: 1100px; margin: 0 auto; }
+.faq-layout { display: grid; grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.6fr); gap: 3rem; align-items: start; }
+.faq-topic-nav { position: sticky; top: 120px; display: grid; gap: 0.75rem; padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
+.faq-topic-nav button { width: 100%; padding: 0.9rem 1rem; border: 1px solid transparent; border-radius: 4px; background: transparent; color: var(--text-primary); font: inherit; text-align: left; cursor: pointer; transition: all 0.2s ease; }
+.faq-topic-nav button:hover, .faq-topic-nav button[aria-pressed="true"] { border-color: var(--gold); background: var(--gold-glow); color: var(--gold); }
+.faq-topic-nav button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.faq-category-title { margin: 0 0 1.5rem; color: var(--gold); scroll-margin-top: 120px; }
 .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 2rem; overflow: hidden; transition: all 0.3s ease; }
 .faq-header { padding: 2rem 2.5rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-weight: 600; font-size: 1.15rem; }
 .faq-header i { color: var(--gold); transition: transform 0.4s ease; }
@@ -294,6 +300,17 @@ nav {
 .faq-item.active { border-color: var(--gold); box-shadow: var(--shadow); }
 .faq-item.active .faq-header i { transform: rotate(180deg); }
 .faq-item.active .faq-body { max-height: 400px; padding: 0 2.5rem 2rem 2.5rem; }
+@media(max-width: 1024px) {
+  .faq-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .faq-topic-nav { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media(max-width: 650px) {
+  .faq-topic-nav { grid-template-columns: 1fr; padding: 1rem; gap: 0.35rem; }
+  .faq-topic-nav button { padding: 0.75rem; }
+  .faq-header { padding: 1.25rem; font-size: 1rem; }
+  .faq-body { padding: 0 1.25rem; }
+  .faq-item.active .faq-body { padding: 0 1.25rem 1.25rem; }
+}
 
 /* TABLE FOR METALLURGICAL DATA */
 .spec-table { width: 100%; border-collapse: collapse; margin-top: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
@@ -1099,50 +1116,276 @@ footer { background: #050504; color: #A39C93; padding: 8rem 0 3.5rem; border-top
   <section class="hero-section">
     <div class="container">
       <div class="section-head">
-        <span>Getting Started</span>
-        <h2>FAQs: Jewelry Design & Development Partner</h2>
-        <p>What to bring to a project, who we work with, and the materials we can help you source.</p>
+        <span>Customer Support</span>
+        <h2>FAQs: Jewelry Design &amp; 3D Printing</h2>
+        <p>Answers about the design process, files, pricing, delivery, measurements, printing, and support.</p>
       </div>
 
       <div class="faq-wrap" style="margin-bottom:6rem;">
-        <div class="faq-item active">
-          <div class="faq-header">
-            <span>What does a jewelry design and development partner do?</span>
-            <i class="fa-solid fa-chevron-down"></i>
+        <div class="faq-layout">
+          <nav class="faq-topic-nav" aria-label="FAQ topics">
+            <button type="button" data-faq-topic="faq-design" aria-controls="faq-design" aria-pressed="true">About the Design Process</button>
+            <button type="button" data-faq-topic="faq-files" aria-controls="faq-files" aria-pressed="false">Files &amp; Output</button>
+            <button type="button" data-faq-topic="faq-pricing" aria-controls="faq-pricing" aria-pressed="false">Pricing &amp; Quotation</button>
+            <button type="button" data-faq-topic="faq-delivery" aria-controls="faq-delivery" aria-pressed="false">Delivery Time</button>
+            <button type="button" data-faq-topic="faq-measurements" aria-controls="faq-measurements" aria-pressed="false">Measurements &amp; Size Details</button>
+            <button type="button" data-faq-topic="faq-stones" aria-controls="faq-stones" aria-pressed="false">Stone Setting &amp; Gem Layout</button>
+            <button type="button" data-faq-topic="faq-printing" aria-controls="faq-printing" aria-pressed="false">3D Printing &amp; Master Model</button>
+            <button type="button" data-faq-topic="faq-modifications" aria-controls="faq-modifications" aria-pressed="false">Design Modifications</button>
+            <button type="button" data-faq-topic="faq-support" aria-controls="faq-support" aria-pressed="false">Production Support</button>
+            <button type="button" data-faq-topic="faq-confidentiality" aria-controls="faq-confidentiality" aria-pressed="false">Confidentiality</button>
+            <button type="button" data-faq-topic="faq-orders" aria-controls="faq-orders" aria-pressed="false">Order Requirements</button>
+            <button type="button" data-faq-topic="faq-shipping" aria-controls="faq-shipping" aria-pressed="false">Shipping &amp; Delivery (Printing Only)</button>
+          </nav>
+          <div class="faq-topic-content">
+        <div class="faq-category" id="faq-design" data-faq-panel>
+          <h3 class="faq-category-title">About the Design Process</h3>
+          <div class="faq-item active">
+            <div class="faq-header"><span>How do you turn my idea into a CAD model?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>I study your references, understand your style, confirm measurements, and then create a precise 3D CAD model using professional software. You receive previews at each stage.If you can’t visit a store or want to keep the ring a surprise, measure the finger’s size in millimeters. Then, use the chart to find the correct ring size.</p></div>
           </div>
-          <div class="faq-body">
-            <p>We take your idea, whether a sketch, a reference photo, or just a concept, and turn it into a production-ready piece. That covers design, 3D modeling (CAD), prototyping, material and stone sourcing, manufacturing, and quality control.</p>
+          <div class="faq-item">
+            <div class="faq-header"><span>Can I send sketches or reference images?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes. Any sketches, photos, or sample jewelry help me match your exact vision.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>How many revisions are included?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>1–2 moderate revisions are included to fine-tune details before final approval.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Can you create a matching full set?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, I can design a complete coordinated set (ring, pendant, earrings, bangle) with matching style and proportions.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>How do I determine my ring size?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>If you do not know your size, our recommendation is to click on Ring size find out your size.</p></div>
           </div>
         </div>
 
-        <div class="faq-item">
-          <div class="faq-header">
-            <span>Who do you work with?</span>
-            <i class="fa-solid fa-chevron-down"></i>
+        <div class="faq-category" id="faq-files" data-faq-panel hidden>
+          <h3 class="faq-category-title">Files &amp; Output</h3>
+          <div class="faq-item">
+            <div class="faq-header"><span>What files will I receive?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>You get STL, 3DM, OBJ and high-quality rendered images for approval or marketing.</p></div>
           </div>
-          <div class="faq-body">
-            <p>Independent designers, emerging brands, retailers, established labels, and private-label buyers. You don't need a manufacturing background.</p>
+          <div class="faq-item">
+            <div class="faq-header"><span>Are files production-ready?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, models are made with correct wall thickness, prong sizes, tolerances, and casting requirements.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Do you provide realistic renders?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes. I create photorealistic images so you can clearly visualize the final piece.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Are the files suitable for printing/casting?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>All models are optimized for smooth 3D printing, clean burnout, and perfect casting results.</p></div>
           </div>
         </div>
 
-        <div class="faq-item">
-          <div class="faq-header">
-            <span>What do I need to start a project?</span>
-            <i class="fa-solid fa-chevron-down"></i>
+        <div class="faq-category" id="faq-pricing" data-faq-panel hidden>
+          <h3 class="faq-category-title">Pricing &amp; Quotation</h3>
+          <div class="faq-item">
+            <div class="faq-header"><span>How do you calculate the design cost?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Cost depends on design complexity, detailing, number of stones, and time required.</p></div>
           </div>
-          <div class="faq-body">
-            <p>Any of the following works: a hand sketch, inspiration images, a technical drawing, a CAD file, or a written brief. Tell us your target market, budget, and timeline, and we'll help fill in the rest.</p>
+          <div class="faq-item">
+            <div class="faq-header"><span>Do you charge separately for each piece?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, each item (ring, earring, pendant) is priced individually because each design requires separate work.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Is printing cost separate?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, printing involves different materials and time, so it is billed separately.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Do you offer package prices for bridal sets?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, full bridal set packages come with discounted bundle pricing.</p></div>
           </div>
         </div>
 
-        <div class="faq-item">
-          <div class="faq-header">
-            <span>Do you offer ethical and sustainable options?</span>
-            <i class="fa-solid fa-chevron-down"></i>
+        <div class="faq-category" id="faq-delivery" data-faq-panel hidden>
+          <h3 class="faq-category-title">Delivery Time</h3>
+          <div class="faq-item">
+            <div class="faq-header"><span>Delivery Time</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Normally within 24–48 hours depending on complexity.</p></div>
           </div>
-          <div class="faq-body">
-            <p>Yes. Options include recycled metals, lab-grown stones, and responsibly sourced natural gemstones, with documentation on request.</p>
+          <div class="faq-item">
+            <div class="faq-header"><span>Final production-ready file delivery time?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Usually 2–4 days after approval of the first draft.</p></div>
           </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Do you offer urgent service?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, express and same-day modeling is available with an additional rush fee.</p></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="faq-measurements" data-faq-panel hidden>
+          <h3 class="faq-category-title">Measurements &amp; Size Details</h3>
+          <div class="faq-item">
+            <div class="faq-header"><span>How do I determine my ring size?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>If you do not know your size, our recommendation is to click on “Ring Size” to find out your size.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>What measurements do you need?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Ring size, widths, stone sizes, wrist size for bangles, pendant dimensions, or any custom requirements.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Do you follow size charts?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, US, UK, and Indian size systems are supported.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>How do you ensure proper stone spacing?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>I use accurate pavé/channel spacing rules and check structural strength during modeling.</p></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="faq-stones" data-faq-panel hidden>
+          <h3 class="faq-category-title">Stone Setting &amp; Gem Layout</h3>
+          <div class="faq-item">
+            <div class="faq-header"><span>Can you create a stone placement map?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, I provide detailed stone layouts showing positions, count, and sizes.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>What setting styles do you support?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>All major settings: prong, micro-pavé, bead, channel, invisible, tension, etc.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Can you recommend stone sizes?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, I guide you on ideal sizes for balance, strength, and aesthetic result.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Do you provide gemstone weight estimation?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, I can estimate stone weight based on the model.</p></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="faq-printing" data-faq-panel hidden>
+          <h3 class="faq-category-title">3D Printing &amp; Master Model</h3>
+          <div class="faq-item">
+            <div class="faq-header"><span>What materials do you use?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>High-quality castable resin designed specifically for jewelry manufacturing.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Are prints suitable for direct casting?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, prints are fully compatible with investment casting for clean burnout.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Maximum print size?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Up to approximately 10 cm depending on the model and machine.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Do you offer casting services?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>I provide printing only, but I can guide you on best practices for casting.</p></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="faq-modifications" data-faq-panel hidden>
+          <h3 class="faq-category-title">Design Modifications</h3>
+          <div class="faq-item">
+            <div class="faq-header"><span>Can you modify an existing design?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, I can edit old CAD files, recreate missing files, or improve older models.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Can you adjust ring size, thickness, or stone size?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Absolutely — all dimensions can be customized as needed.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Cost for revisions after final approval?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Small changes have a minor fee; major redesigns require a new quote.</p></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="faq-support" data-faq-panel hidden>
+          <h3 class="faq-category-title">Production Support</h3>
+          <div class="faq-item">
+            <div class="faq-header"><span>Do you provide manufacturing guidance?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, I offer support on thickness, prongs, weight control, and technical improvements.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Can you assist with stone setting issues?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, I review spacing, prong angles, and overall gemstone layout.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Do you help with mold-making and finishing?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, I provide guidance to ensure smooth mold-making and clean finishing.</p></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="faq-confidentiality" data-faq-panel hidden>
+          <h3 class="faq-category-title">Confidentiality</h3>
+          <div class="faq-item">
+            <div class="faq-header"><span>Will my design be kept confidential?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, your designs are private and never shared.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Can you sign an NDA?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, NDA signing is available on request.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Do you reuse client designs?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>No every design is exclusive to each customer.</p></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="faq-orders" data-faq-panel hidden>
+          <h3 class="faq-category-title">Order Requirements</h3>
+          <div class="faq-item">
+            <div class="faq-header"><span>What information do you need to start?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Reference images, measurements, stone list, preferred style, and any special instructions.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Do you need high-resolution pictures?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, clear images help create an accurate design.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>What file formats can I send?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Images, videos, sketches, PDFs, or any format that clearly shows your idea.</p></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="faq-shipping" data-faq-panel hidden>
+          <h3 class="faq-category-title">Shipping &amp; Delivery (Printing Only)</h3>
+          <div class="faq-item">
+            <div class="faq-header"><span>Do you ship printed models internationally?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Yes, international shipping is available.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Do you charge for shipping?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>All international orders are subject to a shipping charge. International duties, taxes and fees are the full responsibility of the buyer and will be collected by the carrier prior to delivery.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>How can I track my order?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Please refer back to your order confirmation email, which includes a link to track your order progress.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Can I reroute my package?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>For insurance reasons, we are not able to reroute packages once they ship.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>What do I do if the package I received looks tampered with?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>If your delivery package appears to have been tampered with, please refuse delivery and contact us immediately via email at info@artdeexcelence.com</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Where do you ship from?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>All online orders are shipped from our Bangkok Thailand headquarters.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Do you ship internationally?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Art de excellence is proud to offer delivery to most international destinations. Please note the customer is responsible for any and all duties, taxes and fees applied to the shipment by local customs.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Will I be charged duties, taxes and other fees?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Please note the customer is responsible for any and all duties, taxes and fees applied to the shipment by local customs.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>What packaging do you use?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>Shock-resistant and moisture-protected packing to keep prints safe.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-header"><span>Which courier companies do you use?</span><i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-body"><p>DHL, FedEx, Leopards, or any courier you prefer.</p></div>
+          </div>
+        </div>
+        </div>
         </div>
 
       </div>
@@ -1407,7 +1650,24 @@ if (cursor && window.matchMedia('(pointer: fine)').matches) {
 }
 
 document.querySelectorAll('.faq-header').forEach(header => {
-  header.addEventListener('click', () => header.parentElement.classList.toggle('active'));
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    const shouldOpen = !item.classList.contains('active');
+    document.querySelectorAll('.faq-item.active').forEach(openItem => openItem.classList.remove('active'));
+    if (shouldOpen) item.classList.add('active');
+  });
+});
+
+document.querySelectorAll('[data-faq-topic]').forEach(button => {
+  button.addEventListener('click', () => {
+    const selectedTopic = button.getAttribute('data-faq-topic');
+    document.querySelectorAll('[data-faq-topic]').forEach(topicButton => {
+      topicButton.setAttribute('aria-pressed', String(topicButton === button));
+    });
+    document.querySelectorAll('[data-faq-panel]').forEach(panel => {
+      panel.hidden = panel.id !== selectedTopic;
+    });
+  });
 });
 
 function startCounters() {
